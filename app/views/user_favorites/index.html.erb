@@ -1,0 +1,160 @@
+<div class="mylike-wrapper">
+<div class="container">
+<div class="heading">
+<h2>お気に入りにしたアイテムリスト</h2>
+</div>
+
+
+
+<% page_entries_info @user %>
+
+
+<div class="favorites-counts">
+<h3>お気に入り数</h3>
+<%= current_user.favorites.count %>
+</div>
+
+
+<% current_user.favorites.each do |favorite| %>
+<%#= link_to user_favorites_path %>
+<%= link_to item_path(favorite.item.id) do %>
+<div class="items clearfix">
+<div class="item">
+ <div class="itemsid item img ">
+<%= image_tag favorite.item.picture %>
+</div>
+<p class="item-info">
+<span class="item-name">
+<%= link_to favorite.item.name %>
+</span><br>
+<span class="area">
+<%= favorite.item.user.useraddress1 %><br>
+<%= favorite.item.user.useraddress2 %>
+</span>
+</p>
+</div>
+</div>
+<% end %>
+<% end %>
+
+<div class="container">
+<div class="bottom">
+<!-- <a href="#" class="btn-lg">続きを見る</a> -->
+<%= paginate @user, outer_window: 5 %>
+</div>
+</div>
+</div>
+</div>
+
+<!-- <a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+</div>
+
+<div class="mylike-items clearfix">
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+</div>
+
+<div class="mylike-items clearfix">
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+</div>
+
+<div class="mylike-items clearfix">
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+</div>
+
+<div class="mylike-items clearfix">
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="#" class="mylike-item">
+<div class="mylike-item1"><img src="img/babycar.jpg"></div>
+<p class="mylike-item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+</div> -->
+
+
+
+

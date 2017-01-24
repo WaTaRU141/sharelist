@@ -1,0 +1,39 @@
+<div class="timeline-wrapper">
+	<div class="container">
+		<div class="heading">
+			<h2>リクエスト一覧</h2>
+		</div>
+
+
+    <% page_entries_info @requests %>
+
+	<% @requests.each do |request| %>
+		<div class="request-zone clearfix">
+			<div class="user-area">
+				<div class="user-icon">
+				<%= image_tag request.user.usericon %>
+				</div>
+				<p class="user-n"><%= request.user.username %></p>
+			</div>
+				
+			<div class="request-area">
+				<div class="request-title"><%= request.title %>
+				</div>
+				<div class="request-comment"><%= request.comment %>
+				</div>
+				<div class="request-time"><%= request.created_at %>
+				</div>
+			</div>
+		</div>
+	<% end %>
+
+		
+
+	<div class="container">
+		<div class="request-bottom">
+			<%= paginate @requests, outer_window: 5 %>
+		</div>
+	</div>
+
+	</div>
+</div>

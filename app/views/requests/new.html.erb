@@ -1,0 +1,33 @@
+<div class="request-wrapper">
+  <div class="container">
+   <div class="heading">
+   <h2>あなたの必要なものをリクエストしましょう</h2>
+   </div>
+
+    <div class="clearfix">
+     <%= form_for(@request) do |f| %>
+
+     <div class="request-label">
+     <%= f.label :title, "必要なものは何ですか？" %>
+    </div>
+
+    <%= f.text_field :title %>
+
+      <div class="comments-label">
+      <%= f.label :title, "何でそれが必要ですか？" %>
+      </div>
+
+      <%= f.text_field :comment %>
+
+      <div class="request-btn btn-lg">
+      <%= f.submit "リクエスト" %>
+      </div>
+
+    <% end %>
+ 
+    </div>
+</div>
+</div>
+
+
+

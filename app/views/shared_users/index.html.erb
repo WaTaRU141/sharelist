@@ -1,0 +1,49 @@
+<div class="myfriends-wrapper">
+    <div class="container">
+        <div class="heading">
+        <h2>申請一覧</h2>
+        </div>
+
+
+
+
+
+
+    <%# page_entries_info @hinverse_holders_relationships %>
+    <% @inverse_holders_relationships.each do |relationship| %>
+			<%= link_to item_path(relationship.item.id) do %>
+<div class="items clearfix">
+<div class="item">
+ <div class="itemsid item img ">
+ <%= image_tag relationship.item.picture if relationship.item.picture.present? %>
+ </div>
+<p class="item-info">
+<span class="item-name">
+	<%= relationship.item.name %>
+</span><br>
+<span class="area">
+	<%= relationship.item.user.useraddress1 %><br><%= relationship.item.user.useraddress2 %>
+</span>
+</p>
+<div class="like-btn-sm">
+<%= link_to "お気に入り", item_favorites_path(relationship.item), method: :post %>
+</div>
+</div>
+</div>
+<% end %>
+<% end %>
+
+
+								<div class="container">
+									<div class="bottom">
+									<%#= paginate @inverse_holders_relationships, outer_window: 5 %>
+									</div>
+								</div>
+	</div>
+</div>
+
+
+
+
+
+	

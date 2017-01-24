@@ -1,0 +1,50 @@
+<div class="list-wrapper">
+	<div class="container">
+		<div class="heading">
+			<h2>シャアしたアイテムリスト</h2>
+		</div>
+
+
+		<% page_entries_info @shareditems %>
+
+
+		<% @shareditems.each do |shareditem| %>
+			<%= link_to shareditem_path(shareditem.id) do %>
+				<div class="items clearfix">
+					<div class="item">
+ 						<div class="itemsid item img ">
+ 							<%= image_tag shareditem.picture if shareditem.picture.present? %>
+ 						</div>
+							<p class="item-info">
+								<span class="item-name">
+								<%= shareditem.name %>
+								</span><br>
+									<span class="area">
+									<%= shareditem.user.useraddress1 %><br><%= shareditem.user.useraddress2 %>
+									</span>
+							</p>
+<!-- <div class="like-btn-sm"> -->
+<%#= link_to "お気に入り", item_favorites_path(item), method: :post %>
+<!-- </div> -->
+					</div>
+				</div>
+		<% end %>
+		<% end %>
+
+
+
+
+
+
+
+
+<div class="container">
+<div class="bottom">
+<!-- <a href="#" class="btn-lg">続きを見る</a> -->
+<%= paginate @shareditems, outer_window: 5 %>
+</div>
+</div>
+
+
+</div>
+</div>

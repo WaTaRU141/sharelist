@@ -1,0 +1,51 @@
+<div class="upload-wrapper">
+  <div class="container">
+    <div class="heading">
+      <h2>アイテム情報を入力</h2>
+    </div>
+
+<!-- items item item-info item-name area -->
+    <%= form_for(@item) do |f| %>
+      <div class="img-upload">
+      
+
+        <!-- <h4>アイテム画像</h4> -->
+        <div class="upload-imgs clearfix">
+            <%= f.label :title, "アイテム画像" %>
+            <!-- <p>最大４枚までアップロードできます</p> -->
+            <p>画像をアップロード</p>
+            <!-- <div class="uploadimg"> -->
+            <%#= fi.text_field :image_url, class:'uploadimg' %>    
+            <%= f.file_field :picture, class: 'picture' %>         
+              <!-- <p>ドラックアンドドロップ</p> -->
+              <!-- <p>またはクリックしてファイルをアップロード</p> -->
+            <!-- </div> -->
+        </div>
+      </div>
+
+
+
+      <div class="upload-text-field">
+      <!-- <div class="name-upload"> -->
+        <%= f.label :title, "アイテム名" %>
+        <!-- <h4>アイテム名</h4> -->
+        <!-- textarea name="other" rows="10" cols="100" placeholder="電動自転車"></textarea> -->
+        <%= f.text_field :name , class:'name-upload'%>
+     <!--  </div> -->
+
+      <!-- <div class="comment-upload"> -->
+        <%= f.label :title, "コメント" %>
+        <!-- <h4>コメント</h4> -->
+        <%= f.text_field :comment ,class:'comment-upload'%>
+        <!-- <textarea name="other" rows="10" cols="100" placeholder="車を購入したので、使う機会が減ってしまった電動自転車です。子供が小さい時大活躍しました。"></textarea> -->
+     <!--  </div> -->
+      </div>
+
+
+      <!-- <div class="request-btn"> -->
+        <!-- <input type="submit" class="btn-lg"  value="シェアする"> -->
+        <%= f.submit "シェアする", class:'request-btn btn-lg'%>
+      <!-- </div> -->
+    <% end %>
+  </div>
+</div>

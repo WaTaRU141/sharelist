@@ -1,0 +1,113 @@
+
+<div class="profile-wrapper">
+<div class="container">
+<div class="heading">
+<h2>プロフィール設定</h2>
+</div>
+
+<!-- items item item-info item-name area -->
+
+<div class="profile-setting clearfix">
+<div class="img-profile">
+<h4>アイコン</h4>
+<div class="pf-img"><!-- <img src="img/user.jpg"> -->
+  <% if current_user.usericon.present? %>
+    <%= image_tag current_user.usericon_url %>
+  <% else %>
+  <% end %>
+</div>
+<div class="profile-set">
+ <%= link_to "プロフィール設定はこちら", edit_user_registration_path %>
+</div>
+<!-- <div class="save-box">
+</div>
+<div class="change-box">
+<%#= link_to edit_user_registration %>
+<a href="#" class="change">変更</a>
+</div> -->
+</div>
+
+<div class="pf-message">
+<label class="pf-message-label" for="comments">紹介文
+</label>
+<% if current_user.usermessage.present? %>
+<%= link_to current_user.usermessage %>
+<% else %>
+<% end %>
+<div class="profile-set">
+<%= link_to "プロフィール設定はこちら", edit_user_registration_path %>
+</div>
+
+<!-- <textarea name="other" rows="10" cols="100" placeholder="２児のママです。家の中に使わないものが多いのでお近くのから気軽にシェアしましょう！よろしくお願いいたします">
+</textarea> -->
+<!-- <div class="save-box">
+<a href="#" class="save">保存</a>
+</div>
+<div class="change-box">
+<a href="#" class="change">変更</a>
+</div> -->
+</div>
+
+
+<div class="pf-name">
+<label class="pf-name-label" for="comments">名前
+</label>
+<%= link_to current_user.username %>
+<!-- <textarea name="other" rows="10" cols="100" placeholder="山田花子"> 
+</textarea> -->
+<!-- <div class="save-box">
+<a href="#" class="save">保存</a>
+</div>
+<div class="change-box">
+<a href="#" class="change">変更</a>
+</div> -->
+</div>
+
+<div class="pf-adress1">
+<label class="pf-adress1-label" for="comments">都道府県
+</label>
+<%= link_to current_user.useraddress1 %>
+<!-- <textarea name="other" rows="10" cols="100" placeholder="東京都">
+</textarea> -->
+<!-- <div class="save-box">
+<a href="#" class="save">保存</a>
+</div>
+<div class="change-box">
+<a href="#" class="change">変更</a>
+</div> -->
+</div>
+
+<div class="pf-adress2">
+<label class="pf-adress2-label" for="comments">市区町村
+</label>
+<%= link_to current_user.useraddress2 %>
+<!-- <textarea name="other" rows="10" cols="100" placeholder="目黒区"> 
+</textarea> -->
+<!-- <div class="save-box">
+<a href="#" class="save">保存</a>
+</div>
+<div class="change-box">
+<a href="#" class="change">変更</a>
+</div> -->
+</div>
+
+<div class="pf-mail">
+<label class="pf-mail-label" for="comments">メールアドレス
+</label>
+<%= link_to current_user.email %>
+<!-- <textarea name="other" rows="10" cols="100" placeholder="">
+</textarea> -->
+<!-- <div class="save-box">
+<a href="#" class="save">保存</a>
+</div>
+<div class="change-box">
+<a href="#" class="change">変更</a>
+</div> -->
+</div>
+</div>
+
+
+
+</div>
+</div>
+

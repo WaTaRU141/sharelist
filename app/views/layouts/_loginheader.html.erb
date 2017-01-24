@@ -1,0 +1,97 @@
+_loginheader.html.erb<header class="clearfix">
+    <div class="container clearfix">
+      <div class="header-left">
+        <a href="index.html" class="logo">Share <span class="logo-color">LIST</span>.<span class="logo-color">.</span>.</a>
+       
+        
+      </div>
+
+       <span class="fa fa-bars menu-icon"></span>
+      <div class="header-right clearfix">
+        <ul class="menu-list">
+          <!-- <li><a href="index.html" class="main-menu"><i class="fa fa-home" aria-hidden="true"></i>ホーム</a></li> -->
+
+          <li><i class="fa fa-home" aria-hidden="true"><%= link_to "ホーム", root_path ,class:'main-menu' %></i></li>
+
+
+
+          <!-- <li><a href="list.html" class="main-menu"><i class="fa fa-search" aria-hidden="true"></i>リストを見る</a></li> -->
+
+          <li><i class="fa fa-home" aria-hidden="true"><%= link_to "リストを見る", item_index_path ,class:'main-menu' %></i></li>
+
+
+
+         <!--  <li><a href="request.html" class="main-menu"><i class="fa fa-comments" aria-hidden="true"></i>リクエスト</a></li> -->
+
+
+           <li><i class="fa fa-comments" aria-hidden="true"><%= link_to "リクエスト",class:'main-menu' %></i></li>
+           <!-- pathなし -->
+
+
+
+          <!-- <li><a href="upload.html" class="main-menu"><i class="fa fa-share-alt" aria-hidden="true"></i>シェアする</a></li> -->
+
+          <li><i class="fa fa-share-alt" aria-hidden="true"><%= link_to "シェアする", class:'main-menu' %></i></li>
+          <!-- pathなし -->
+
+
+         
+
+          
+
+          <!-- layouts-->
+
+          
+
+
+
+          <!-- <li><a href="login.html" class="main-menu"><i class="fa fa-key" aria-hidden="true"></i>ログイン</a></li> -->
+
+          <% if user_signed_in? %>
+       
+           <li><i class="fa fa-sign-out" aria-hidden="true"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></i></li>
+         <% else %>
+        
+        
+
+
+
+          <li class="log-menu"><i class="fa fa-cog" aria-hidden="true"></i>
+          <i class="fa fa-sort-desc" aria-hidden="true"></i>
+            <ul class="loginafter-menu">
+              <!-- <li><a href="profile.html"><i class="fa fa-user" aria-hidden="true"></i>
+プロフィール</a></li> -->
+
+<li><i class="fa fa-user" aria-hidden="true"><%= link_to "プロフィール", mypage_profile_path %></i></li>
+
+
+
+
+              <!-- <li><a href="mylile.html"><i class="fa fa-heart-o" aria-hidden="true"></i>お気に入り一覧</a></li> -->
+
+              <li><i class="fa fa-heart-o" aria-hidden="true"><%= link_to "お気に入り一覧", favorites_path %></i></li>
+
+
+             <!--  <li><a href="myrequest.html"><i class="fa fa-comments" aria-hidden="true"></i>リクエスト履歴</a></li> -->
+
+
+
+              <li><i class="fa fa-comments" aria-hidden="true"><%= link_to "リクエスト履歴", share_requests_path %></i></li>
+
+
+              <!-- <li><a href="myfriends.html"><i class="fa fa-users" aria-hidden="true"></i>シェア友達</a></li> -->
+
+              <li><i class="fa fa-users" aria-hidden="true"><%= link_to "シェア友達", shared_users_path %></i></li>
+
+
+
+            </ul>
+          </li>
+        </ul>
+      </div>
+     
+    </div>
+
+
+
+  </header>

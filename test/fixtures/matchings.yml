@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  holder_id: 1
+  reqyest_user_id: 1
+  item_id: 1
+  comment: MyText
+  accept: false
+
+two:
+  holder_id: 1
+  reqyest_user_id: 1
+  item_id: 1
+  comment: MyText
+  accept: false

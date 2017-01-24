@@ -1,0 +1,91 @@
+
+<div class="user-wrapper">
+<div class="container">
+<div class="heading">
+<h2>ユーザー情報</h2>
+</div>
+
+<!-- items item item-info item-name area -->
+
+<div class="user-profile clearfix">
+<div class="user-p-area">
+<div class="img-user">
+<div class="pf-img">
+<%# binding.pry %>
+<%= image_tag @user.usericon_url %></div>
+</div>
+
+<div class="user-data">
+
+<div class="user-n">
+<p><%= @user.username %></p>
+</div>
+
+
+<div class="user-adress1">
+<p><%= @user.useraddress1 %></p>
+</div>
+
+<div class="user-adress2">
+<p><%= @user.useraddress2 %></p>
+</div>
+
+<div class="user-sns">
+<a href="" class="user-facebook">
+<span class="fa fa-facebook"></span>
+</a>
+</div>
+
+</div>
+</div>
+
+<div class="user-message">
+<p><%= @user.usermessage %>
+</p>
+
+</div>
+
+
+
+</div>
+
+</div>
+</div>
+
+<div class="list-wrapper">
+<div class="container">
+<div class="heading">
+<h2>シェアできるアイテムリスト</h2>
+</div>
+
+<div class="items clearfix">
+<a href="item.html" class="item">
+<div class="item1"><img src="img/babycar.jpg"></div>
+<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="item.html" class="house">
+<div class="item2"><img src="img/babycar.jpg"></div>
+<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="item.html" class="item">
+<div class="item3"><img src="img/babycar.jpg"></div>
+<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+<a href="item.html" class="item">
+<div class="item4"><img src="img/babycar.jpg"></div>
+<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
+</a>
+
+</div>
+
+<div class="bottom">
+<a href="#" class="btn-lg">続きを見る</a>
+
+</div>
+</div>
+
+</div>
+</div>

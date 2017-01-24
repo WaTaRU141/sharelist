@@ -1,0 +1,78 @@
+<div class="item-wrapper">
+	<div class="heading">
+		<h2><%= @item.name %></h2>
+	</div>
+
+	<!-- items item item-info item-name area -->
+
+	<div class="imgs">
+		<div class="img-lgs">
+			<!-- <div class="img-lg"><img src="img/babycar.jpg"></div> -->
+			<div class="img-lg">
+			<%= image_tag @item.picture_url if @item.picture.present? %>
+			</div>
+		</div>
+		<div class="img-sms">
+			<!-- <div class="img-sm"><img src="img/babycar.jpg"></div>
+			<div class="img-sm"><img src="img/babycar.jpg"></div>
+			<div class="img-sm"><img src="img/babycar.jpg"></div>
+			<div class="img-sm"><img src="img/babycar.jpg"></div> -->
+		</div>
+	</div>
+
+	<table>
+		<tr>
+			<th>所有者</th>
+			<td><%= @item.user.username %>
+			<!-- <a href ="user.html">山田花子</a> -->			
+			</td>
+		</tr>
+		<tr>
+			<th>アイテム</th>
+			<td><%= @item.name %></td>
+		</tr>
+		<tr>
+			<th>地域1</th>
+			<td><%= @item.user.useraddress1 %></td>
+		</tr>
+		<tr>
+			<th>地域2</th>
+			<td><%= @item.user.useraddress2 %></td>
+		</tr>
+	</table>
+
+	<div class="item-comment">
+		<h3>所有者からコメント</h3>
+		<p><%= @item.comment %>
+		</p>
+	</div>
+
+	<div class="heading">
+		<h2>申請一覧</h2>
+	</div>
+	<% @item.relationships.each do |relationship| %>
+		<div class="user-area clearfix">
+			<div class="user-icon">
+				<%= image_tag relationship.request_user.usericon %>
+			</div>
+			<div class="request-area">
+				<div class="request-title">
+				<%= relationship.comment %>
+				</div>
+			</div>
+			<div class="accept">
+				<% if relationship.accept %>
+					<p>承認</p>
+					<% else %>
+					<%= link_to "未承認",item_relationship_path(relationship.item_id, relationship),method: :patch %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+<div class="myfriends-wrapper">
+	<div class="container">
+		<div class="heading">
+			<h2>投稿アイテムのシャア成立一覧</h2>
+		</div>
+
+		<%# page_entries_info current_user.current_user.relationships %>
+
+		<% current_user.relationships.each do |relationship| %>
+			<% if relationship.accept == true %>
+				<div class="myfriends clearfix">
+					<div class="user-area">
+						<div class="user-icon">
+						<%= image_tag relationship.item.picture %>
+						</div>
+						<p class="user-n"><%= relationship.item.name %></p>
+					</div>
+					<div class="request-area">
+						<div class="request-title">
+						<%= relationship.comment %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+
+		<div class="bottom">
+			<%#= paginate current_user.relationships, outer_window: 5 %>
+		</div>
+
+	</div>
+	<div class="myfriends2-wrapper">
+		<h2>申請アイテムのシャア成立一覧</h2>
+		<div class="container">
+			<%# page_entries_info current_user.relationships %>
+
+			<% current_user.inverse_holders.each do |relationship| %>
+				<% if relationship.accept == true %>
+					<div class="myfriends clearfix">
+						<div class="user-area">
+							<div class="user-icon">
+							<%= image_tag relationship.item.picture %>
+							</div>
+							<p class="user-n"><%= relationship.item.name %></p>
+						</div>
+						<div class="request-area">
+							<div class="request-title">
+							<%= relationship.comment %>
+							</div>
+					</div>
+				<% end %>
+			<% end %>
+
+			<div class="bottom">
+			<%#= paginate current_user.relationships, outer_window: 5 %>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
