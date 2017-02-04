@@ -8,4 +8,5 @@ class ItemImagesController < ApplicationController
   private
   def create_params
   	params.require(:item_image).permit(thumbnails_attributes:[:image])
+  end
 end
