@@ -29,9 +29,13 @@ gem 'geocoder'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 
+group :development, :test do
+gem 'sqlite3' 
+end
 
-gem 'sqlite3'#, group: :development
-# gem 'pg', group: :production
+group :production do
+ gem 'pg', '0.18.4'
+end
 gem "font-awesome-rails"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
