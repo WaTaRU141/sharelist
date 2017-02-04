@@ -6,6 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @items = @user.items.page(params[:page]).per(8)
+    # @locations = Location.near([params[:location][:latitude], params[:location][:longitude]], 50)
   end
 
   def favorites

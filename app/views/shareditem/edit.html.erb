@@ -1,2 +1,42 @@
-<h1>Shareditem#edit</h1>
-<p>Find me in app/views/shareditem/edit.html.erb</p>
+<div class="item-wrapper">
+	<div class="container">
+		<%= form_for(@item) do |f| %>
+
+			<div class="heading">
+				<h2>投稿したアイテム情報を変更</h2>
+			</div>
+
+			<!-- items item item-info item-name area -->
+			<div class="edit-area">
+
+				<div class="field">
+				<%= f.label :picture, "アイテム画像" ,class: "use-edit" %>
+				<%= f.file_field :picture %>
+				</div>
+
+
+
+				<div class="field">
+				<%= f.label :name, "アイテム名" ,class: "use-edit" %>
+				<%= f.text_field :name %>
+				</div>
+
+
+				<div class="field">
+				<%= f.label :omment, "所有者からコメント" ,class: "use-edit" %>
+				<%= f.text_field :comment ,class: "item-comment" %>
+				</div>
+
+
+
+
+				<div class="request-btn clearfix">
+				<%= f.submit "変更する" ,class: "request-btn btn-lg"%>
+				<!-- # <input type="submit" class="btn-lg"  value="リクエストする"> -->
+				</div>
+				<!-- </form> -->
+
+			</div>
+		<% end %>
+	</div>
+</div>

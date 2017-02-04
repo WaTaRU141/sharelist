@@ -2,6 +2,7 @@
 <div class="container">
    <div class="heading">
 <h2>ログイン</h2>
+</div>
 
 <div class="heading-signup">
  <h2>アカウントをお持ちでない方はこちら</h2>
@@ -45,17 +46,22 @@
     </div>
   <% end -%>
 
-  <div class="actions">
-    <%= f.submit "ログイン" ,class:'submit-btn'%>
+  <div class="action">
+    <%= f.submit "ログイン" ,class:'signup-btn submit-btn'%>
   </div>
 
-<% end %>
 
 </div>
+<% end %>
 
-<div><span class="fa fa-facebook"><%= link_to "Facebookでログイン",user_facebook_omniauth_authorize_path, class:'btn-lg facebook' %></span></div>
+
+<div>
+<%= link_to "Facebookでログイン",user_facebook_omniauth_authorize_path, class:'btn-lg facebook' %>
+</div>
 
 
+</div>
+</div>
 <!-- <div class="login-btn">
       <input type="submit" class="btn-lg"  value="ログイン">
       </div> -->

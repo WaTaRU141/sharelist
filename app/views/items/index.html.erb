@@ -1,36 +1,96 @@
 <div class="list-wrapper">
 <div class="container">
 <div class="heading">
-<h2>レンタルできるアイテムリスト</h2>
+<h2>シェアできるアイテムリスト</h2>
 </div>
 
 
+
+<%# if relationship.accept == true %>
 <% page_entries_info @items %>
-
-
 <% @items.each do |item| %>
-<%= link_to item_path(item.id) do %>
-<div class="items clearfix">
-<div class="item">
- <div class="itemsid item img ">
- <%= image_tag item.picture if item.picture.present? %>
- </div>
-<p class="item-info">
-<span class="item-name">
-	<%= item.name %>
-</span><br>
-<span class="area">
-	<%= item.user.useraddress1 %><br><%= item.user.useraddress2 %>
-</span>
-</p>
-<div class="like-btn-sm">
-<%= link_to "お気に入り", item_favorites_path(item), method: :post %>
-</div>
-</div>
-</div>
-<% end %>
-<% end %>
 
+	<%# unless item.user_id == current_user.try(:id) %>
+
+		<% unless item.relationships.where(accept: true).present? %>
+
+			<% unless item.user_id == current_user.try(:id) %>
+				<%= link_to item_path(item.id) do %>
+					<div class="items clearfix">
+					<div class="item">
+					 <div class="itemsid item img ">
+					 <%= image_tag item.picture if item.picture.present? %>
+					 </div>
+					<p class="item-info">
+					<span class="item-name">
+						<i class="fa fa-tag" aria-hidden="true"> <%= item.name %></i>
+					</span><br>
+					<span class="area">
+					<%# binding.pry %>
+						<i class="fa fa-map-marker" aria-hidden="true"> <%= item.user.useraddress1 %></i><br>
+						<i class="fa fa-map-marker" aria-hidden="true"> <%= item.user.useraddress2 %></i>
+					</span>
+					</p>
+					<div class="like-btn-sm">
+					<%= link_to "お気に入り", item_favorites_path(item), method: :post %>
+					</div>
+					</div>
+					</div>
+	           <% end %>
+	           <% else %>
+					<%= link_to shareditem_path(item.id) do %>
+						<div class="items clearfix">
+							<div class="item">
+		 						<div class="itemsid item img ">
+		 							<%= image_tag item.picture if item.picture.present? %>
+		 						</div>
+									<p class="item-info">
+										<span class="item-name">
+										<%= item.name %>
+										</span><br>
+											<span class="area">
+											<%= item.user.useraddress1 %><br><%= item.user.useraddress2 %>
+											</span>
+									</p>
+		<!-- <div class="like-btn-sm"> -->
+		<%#= link_to "お気に入り", item_favorites_path(item), method: :post %>
+		<!-- </div> -->
+							</div>
+						</div>
+				<% end %>
+		<% end %>
+		
+		<% else %>
+
+
+			<div class="items clearfix">
+			<div class="item">
+			 <div class="itemsid item img soldout">
+			 <%= image_tag item.picture if item.picture.present? %>
+			 <h3>シェア成立</h3>
+			 </div>
+			<p class="item-info">
+			<span class="item-name">
+				<i class="fa fa-tag" aria-hidden="true"> <%= item.name %></i>
+			</span><br>
+			<span class="area">
+			<%# binding.pry %>
+				<i class="fa fa-map-marker" aria-hidden="true"> <%= item.user.useraddress1 %></i><br>
+				<i class="fa fa-map-marker" aria-hidden="true"> <%= item.user.useraddress2 %></i>
+			</span>
+			</p>
+			<!-- <div class="like-btn-sm"> -->
+			<%#= link_to "お気に入り", item_favorites_path(item), method: :post %>
+			<!-- </div> -->
+			</div>
+			</div>
+		<% end %>
+		
+		
+
+
+<% end %>
+<%# end %>
 
 
 
@@ -45,106 +105,10 @@
 </div>
 </div>
 
-
 </div>
 </div>
 
 
 
-<!-- <div class="items">
-<a href="item.html" class="item">
-<div class="item5"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
 
-<a href="item.html" class="item">
-<div class="item6"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-<a href="item.html" class="item">
-<div class="item7"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-<a href="item.html" class="item">
-<div class="item8"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-</div>
-
-
-<div class="items">
-<a href="item.html" class="item">
-<div class="item9"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-<a href="item.html" class="item">
-<div class="item10"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-<a href="item.html" class="item">
-<div class="item11"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-<a href="item.html" class="item">
-<div class="item12"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-</div>
-
-
-<div class="items">
-<a href="item.html" class="item">
-<div class="buy13"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-<a href="item.html" class="item">
-<div class="item14"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-<a href="item.html" class="item">
-<div class="item15"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-<a href="item.html" class="item">
-<div class="item16"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-</div>
-
-
-<div class="items">
-<a href="item.html" class="item">
-<div class="item17"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-<a href="item.html" class="item">
-<div class="item18"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-<a href="item.html" class="item">
-<div class="item19"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-<a href="item.html" class="item">
-<div class="item20"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a> -->
-
-<!-- </div> -->
-
-
-
+<%# end %>

@@ -1,0 +1,28 @@
+<%# binding.pry %>
+  <%#= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@items.latitude}%2C#{@items.longitude}%2C#{@items.perfect_address}" %>
+
+
+<%#= javascript_include_tag "application.js" %>
+
+<!-- <div style='width: 800px;'> -->
+<div class="map">
+<div class="container">
+  <div id="map" style='width: 1200px; height: 800px; margin: 0 auto:'></div>
+</div>
+</div>
+
+<script type="text/javascript">
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    // marker.infowindow = link_to 'アイテムを見る', item_path(item.id)
+    });
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+// setTimeout("location.reload()",5000);
+// -->
+</script>

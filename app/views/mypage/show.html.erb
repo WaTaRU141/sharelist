@@ -95,6 +95,30 @@
 <label class="pf-mail-label" for="comments">メールアドレス
 </label>
 <%= link_to current_user.email %>
+</div>
+
+
+<div class="list-link">
+<%= link_to "シェアしたアイテムリスト", shareditem_index_path %>
+</div>
+
+<div class="list-link">
+<%= link_to "申請リスト", shared_users_path %>
+</div>
+
+<div class="list-link">
+<%= link_to "シャア成立リスト", matchings_index_path %>
+</div>
+
+<div class="list-link">
+<%= link_to "お気に入りにしたアイテムリスト",user_favorites_path %>
+</div>
+
+
+<div class="list-link">
+<%= link_to "あなたの必要なモノリスト", share_requests_path %>
+</div>
+
 <!-- <textarea name="other" rows="10" cols="100" placeholder="">
 </textarea> -->
 <!-- <div class="save-box">
@@ -103,7 +127,7 @@
 <div class="change-box">
 <a href="#" class="change">変更</a>
 </div> -->
-</div>
+
 </div>
 
 

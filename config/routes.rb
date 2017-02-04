@@ -1,17 +1,31 @@
 Rails.application.routes.draw do
+  get 'terms/index'
+
+  get 'privacy/index'
+
+  get 'qanda/index'
+
+  get 'about/index'
+
   # get 'shareditem/index'
 
   # get 'shareditem/edit'
 
- resources :shareditem, only: [:index, :show, :edit]
+ resources :shareditem, only: [:edit, :index, :show, :destroy]
 
   get 'matchings/resouces'
 
   get 'matchings/index' 
 
-  get 'matchings/create'
+  get 'locations/nearby' , to: 'items#nearby'
 
-  get 'matchings/show'
+  
+
+  # get 'matchings/create'
+
+  # get 'matchings/:holder_id' => 'matchings#show',as: :matching
+
+  # get 'matchings/:request_user_id' => 'users#show', as: :matchinguser
 
   get 'matchings/new'
 
@@ -23,7 +37,7 @@ Rails.application.routes.draw do
 
   get 'shared_request/index'
 
-  get 'shared_riquest/index'
+  get 'shared_request/index'
 
   # get 'requests/index'
 
@@ -48,10 +62,17 @@ Rails.application.routes.draw do
 
   get 'items/create'
 
+  # get 'items/index'
+
+
   devise_for :users, :controllers => {
  :registrations => 'users/registrations',
  :sessions => 'users/sessions'
 }
+
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 root 'root#index'
@@ -64,6 +85,10 @@ resources :users, only: [:index, :show, :edit, :update] do
   get :holders, on: :member
   get :request_users, on: :member
 end
+
+
+
+
 
 resources :user_favorites, only: [:index]
 

@@ -6,10 +6,21 @@ class ShareditemController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
+
+  
 
   def show
   	@item = current_user.items.find(params[:id])
   	@holder_relationships = Relationship.where(holder_id: current_user.id).page(params[:page])
+  end
+
+  def destroy
+    @item = current_user.items.find(params[:id])
+    @item.destroy
+    redirect_to  shareditem_index_path
+
+
   end
 end

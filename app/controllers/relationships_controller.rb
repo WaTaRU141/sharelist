@@ -5,9 +5,8 @@ class RelationshipsController < ApplicationController
 		@item = Item.find(params[:item_id])
 		relationship = Relationship.new(relationship_params)
 		relationship.holder_id = @item.user.id
-		relationship.request_user_id = current_user.id
+		relationship.request_user_id = @item.user.id
 		relationship.item_id = @item.id
-		
 
 		
 		if relationship.save!(:validate => false)
@@ -23,12 +22,26 @@ class RelationshipsController < ApplicationController
 		#@holder_relationship = Relationship.where(holder_id: current_user.id).where(request_user_id: @relationship.request_user_id).where(item_id: @relationship.item_id)
         #@relationship.toggle(:accept)
 
-        @relationship.accept = true
-        if @relationship.save!(:validate => false)
-        	redirect_to root_path
+        item = Item.find(params[:item_id])
+   
+        if item.relationships.where(accept: true).blank?
+        	@relationship.toggle(:accept)
+        	if @relationship.save!(:validate => false)
+        		redirect_to shareditem_path(item)
+        	else
+        		redirect_to root_path
+        	end
+        	
         else
-        	puts "#{@relationship.id}ほぞんされていない"
-    	end
+        	redirect_to root_path, alert: "すでにシェアされてます"
+        end
+
+        # @relationship.accept = true
+     #    if @relationship.save!(:validate => false)
+     #    	redirect_to root_path
+     #    else
+     #    	puts "#{@relationship.id}ほぞんされていない"
+    	# end
 	end
 
 	private
@@ -37,3 +50,5 @@ class RelationshipsController < ApplicationController
 	end
 
 end
+
+

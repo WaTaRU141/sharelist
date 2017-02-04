@@ -1,29 +1,41 @@
 <div class="myfriends-wrapper">
 	<div class="container">
 		<div class="heading">
-			<h2>投稿アイテムのシャア成立一覧</h2>
+			<h2>投稿アイテムのシャア成立リスト</h2>
 		</div>
 
 		<%# page_entries_info current_user.current_user.relationships %>
 
 		<% current_user.relationships.each do |relationship| %>
+		<%#= link_to  matching_path(relationship) do %>
 			<% if relationship.accept == true %>
-				<div class="myfriends clearfix">
-					<div class="user-area">
-						<div class="user-icon">
+				<div class="items clearfix">
+			<div class="item">
+			 <div class="itemsid item img soldout">
 						<%= image_tag relationship.item.picture %>
+						<h3>シェア成立</h3>
 						</div>
-						<p class="user-n"><%= relationship.item.name %></p>
+						<p class="item-info">
+			<span class="item-name">
+				<i class="fa fa-tag" aria-hidden="true"> <%= relationship.item.name %></i>
+						<span class="area"><br>
+			<%# binding.pry %>
+				<i class="fa fa-map-marker" aria-hidden="true"> <%= relationship.holder.useraddress1 %></i><br>
+				<i class="fa fa-map-marker" aria-hidden="true"> <%= relationship.holder.useraddress2 %></i>
+				<i class="fa fa-commenting-o" aria-hidden="true">
+				<%= link_to relationship.request_user.username, user_path(relationship.request_user.id)  %></i>
+			</span>
+			</p>
 					</div>
-					<div class="request-area">
-						<div class="request-title">
-						<%= relationship.comment %>
-						</div>
-					</div>
+					<!-- <div class="request-area"> -->
+						<!-- <div class="request-title"> -->
+						<%#= relationship.comment %>
+						<!-- </div> -->
+					<!-- </div> -->
 				</div>
-			<% end %>
+			
 		<% end %>
-
+		<% end %>
 		<div class="bottom">
 			<%#= paginate current_user.relationships, outer_window: 5 %>
 		</div>
@@ -36,20 +48,31 @@
 
 			<% current_user.inverse_holders.each do |relationship| %>
 				<% if relationship.accept == true %>
-					<div class="myfriends clearfix">
-						<div class="user-area">
-							<div class="user-icon">
+					<div class="items clearfix">
+			<div class="item">
+			 <div class="itemsid item img soldout">
 							<%= image_tag relationship.item.picture %>
+							<h3>シェア成立</h3>
 							</div>
-							<p class="user-n"><%= relationship.item.name %></p>
-						</div>
-						<div class="request-area">
-							<div class="request-title">
-							<%= relationship.comment %>
-							</div>
+							<p class="item-info">
+			<span class="item-name">
+				<i class="fa fa-tag" aria-hidden="true"><%= relationship.item.name %></i>
+				<span class="area"><br>
+			<%# binding.pry %>
+				<i class="fa fa-map-marker" aria-hidden="true"> <%= relationship.holder.useraddress1 %></i><br>
+				<i class="fa fa-map-marker" aria-hidden="true"> <%= relationship.holder.useraddress2 %></i>
+				<i class="fa fa-commenting-o" aria-hidden="true"><%= link_to relationship.holder.username, user_path(relationship.holder.id)  %></i>
+			</span>
+					</p>
+					</div>
+						<!-- <div class="request-area">
+							<div class="request-title"> -->
+							<%#= relationship.comment %>
+							<!-- </div> -->
 					</div>
 				<% end %>
 			<% end %>
+
 
 			<div class="bottom">
 			<%#= paginate current_user.relationships, outer_window: 5 %>

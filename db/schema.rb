@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170122112950) do
+ActiveRecord::Schema.define(version: 20170202115632) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer  "user_id"
@@ -37,11 +37,21 @@ ActiveRecord::Schema.define(version: 20170122112950) do
     t.datetime "updated_at", null: false
     t.text     "picture"
     t.integer  "user_id"
+    t.float    "latitude"
+    t.float    "longitude"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "matchings", force: :cascade do |t|
     t.integer  "holder_id"
-    t.integer  "reqyest_user_id"
+    t.integer  "request_user_id"
     t.integer  "item_id"
     t.text     "comment"
     t.boolean  "accept"
@@ -70,6 +80,8 @@ ActiveRecord::Schema.define(version: 20170122112950) do
     t.datetime "updated_at",                      null: false
     t.text     "comment"
     t.boolean  "accept",          default: false, null: false
+    t.string   "invers_holder"
+    t.string   "username"
   end
 
   create_table "requests", force: :cascade do |t|

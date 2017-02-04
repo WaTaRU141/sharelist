@@ -1,2 +1,71 @@
-<h1>Matchings#show</h1>
-<p>Find me in app/views/matchings/show.html.erb</p>
+<div class="item-wrapper">
+<div class="container">
+<div class="heading">
+<h2><%= @relationship.item.name %></h2>
+</div>
+
+<!-- items item item-info item-name area -->
+
+<div class="item clearfix">
+<div class="imgs">
+<div class="img-lgs">
+<!-- <div class="img-lg"><img src="img/babycar.jpg"></div> -->
+<div class="img-lg">
+<%= image_tag @relationship.item.picture_url if @relationship.item.picture.present? %>
+</div>
+</div>
+<div class="img-sms">
+<!-- <div class="img-sm"><img src="img/babycar.jpg"></div>
+<div class="img-sm"><img src="img/babycar.jpg"></div>
+<div class="img-sm"><img src="img/babycar.jpg"></div>
+<div class="img-sm"><img src="img/babycar.jpg"></div> -->
+</div>
+</div>
+
+<table>
+<tr>
+<th>所有者</th>
+<td><%= link_to @relationship.item.user.username, user_path(@relationship.item.id)  %>
+<!-- <a href ="user.html">山田花子</a> --></td>
+</tr>
+<tr>
+<th>アイテム</th>
+<td><%= @relationship.item.name %></td>
+</tr>
+<tr>
+<th>地域1</th>
+<td><%= @relationship.item.user.useraddress1 %></td>
+</tr>
+<tr>
+<th>地域2</th>
+<td><%= @relationship.item.user.useraddress2 %></td>
+</tr>
+</table>
+
+<div class="item-comment">
+<h3>所有者からコメント</h3>
+<p><%= @relationship.item.user.usermessage %>
+</p>
+</div>
+
+
+
+
+
+<!-- <form action="item-request-area"  class="clearfix" method="get / post"> -->
+
+
+
+
+<!-- <textarea name="other" rows="10" cols="100" placeholder="来週の日曜日、自作でカウンターテーブルを製作するのに必要です。どなたか貸していただけないでしょうか？目黒区西小山在住です。"></textarea> -->
+<!-- </div> -->
+
+
+
+
+<!-- </form> -->
+
+
+</div>
+</div>
+</div>

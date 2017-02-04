@@ -1,11 +1,12 @@
-<div class="myrequest-timeline-wrapper">
-<div class="container">
-<div class="heading">
-<h2>あなたのリクエスト一覧</h2>
-</div>
+<div class="timeline-wrapper">
+	<div class="container">
+		<div class="heading">
+		<h2>あなたの必要なモノリスト</h2>
+		</div>
 
 
-<% page_entries_info @requests %>
+    <% page_entries_info @requests %>
+
 
 	<% @requests.each do |request| %>
 		<div class="request-zone clearfix">
@@ -24,9 +25,10 @@
 				<div class="request-time"><%= request.created_at %>
 			</div>
 		</div>
+		</div>
 	<% end %>
 
-	</div>
+		
 
 	<div class="container">
 		<div class="request-bottom">
@@ -34,7 +36,21 @@
 		</div>
 	</div>
 
+	
 </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

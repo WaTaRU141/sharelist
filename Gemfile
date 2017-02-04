@@ -21,12 +21,18 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'rspec-rails'
+gem "gmaps4rails"
+gem 'geocoder'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 
 
-gem 'sqlite3'
+gem 'sqlite3', group: :development
+# 本番ではpostgressを使用する
+gem 'pg', group: :production
 gem "font-awesome-rails"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
@@ -40,7 +46,7 @@ gem 'omniauth-twitter'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'kaminari'
-
+# gem 'font-awesome-saas'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'

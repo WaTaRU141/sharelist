@@ -47,6 +47,14 @@
 		</p>
 	</div>
 
+<div class="like-btn-lg">
+	<%= link_to "編集", edit_shareditem_path(@item.id) %>
+	</div>
+	<div class="like-btn-lg">
+	<%= link_to "削除", shareditem_path(@item.id), method: :delete, data: { confirm: '本当に削除しますか'} %>
+	</div>
+
+
 	<div class="heading">
 		<h2>申請一覧</h2>
 	</div>
@@ -60,13 +68,19 @@
 				<%= relationship.comment %>
 				</div>
 			</div>
-			<div class="accept">
-				<% if relationship.accept %>
-					<p>承認</p>
+			<% unless current_user.id == nil %>
+				<div class="accept">
+					<% if relationship.accept == true %>
+						<p>承認</p>
 					<% else %>
-					<%= link_to "未承認",item_relationship_path(relationship.item_id, relationship),method: :patch %>
-				<% end %>
-			</div>
+						<%= link_to "未承認",item_relationship_path(relationship.item_id, relationship),method: :patch %>
+						<% if relationship.update(accept: true) %>
+						<%= link_to "すでにシェアされてます", shareditem_path, class: "alret" %>
+						<% end %>
+
+					<% end %>
+				</div>
+			<% end %>
 		</div>
 	<% end %>
 </div>

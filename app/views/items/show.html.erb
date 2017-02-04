@@ -25,7 +25,7 @@
 <table>
 <tr>
 <th>所有者</th>
-<td><%= link_to @item.user.username, user_path(@item.user_id)  %>
+<td><%= link_to @item.user.username, user_path(@item.user.id)  %>
 <!-- <a href ="user.html">山田花子</a> --></td>
 </tr>
 <tr>
@@ -41,6 +41,9 @@
 <td><%= @item.user.useraddress2 %></td>
 </tr>
 </table>
+
+
+
 
 <div class="item-comment">
 <h3>所有者からコメント</h3>
@@ -67,10 +70,10 @@
 
 <div class="request-btn clearfix">
 <%= form_for(@relationship, url: item_relationships_path(@item)) do |f| %>
-<%= f.label :title, "メッセージ" %>
+<%#= f.label :title, "メッセージ" %>
 <%= f.text_field :comment , class: 'comment-upload'%>
 <%# if post.user.relationships_by? current_user %>
-<%= f.submit "申請する" %>
+<%= f.submit "申請する" ,class: "request-btn btn-lg"%>
 <!-- # <input type="submit" class="btn-lg"  value="リクエストする"> -->
 <% end %>
 </div>

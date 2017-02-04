@@ -5,6 +5,7 @@
 <h2>ユーザー情報</h2>
 </div>
 
+
 <!-- items item item-info item-name area -->
 
 <div class="user-profile clearfix">
@@ -45,6 +46,12 @@
 
 </div>
 
+<%#= form_for(@locations, url: nearby_locations_path, html: {method: "post"}) do |f| %>
+	<%#= f.hidden_field :latitude %>
+	<%#= f.hidden_field :longitude %>
+	<%#= f.submit '現在地から近いレコードを検索' %>
+	<%#= javascript_include_tag 'javascript/application'%>
+	<%# end %>
 
 
 </div>
@@ -57,33 +64,37 @@
 <div class="heading">
 <h2>シェアできるアイテムリスト</h2>
 </div>
+<% page_entries_info @items %>
 
+<% @items.each do |item| %>
+<%= link_to item_path(item.id) do %>
 <div class="items clearfix">
-<a href="item.html" class="item">
-<div class="item1"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-<a href="item.html" class="house">
-<div class="item2"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-<a href="item.html" class="item">
-<div class="item3"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
-<a href="item.html" class="item">
-<div class="item4"><img src="img/babycar.jpg"></div>
-<p class="item-info"><span class="item-name">ベビーカー</span><br><span class="area">東京都<br>目黒区</span></p>
-</a>
-
+<div class="item">
+ <div class="itemsid item img ">
+ <%= image_tag item.picture if item.picture.present? %>
+ </div>
+<p class="item-info">
+<span class="item-name">
+	<%= item.name %>
+</span><br>
+<span class="area">
+	<%= item.user.useraddress1 %><br><%= item.user.useraddress2 %>
+</span>
+</p>
+<div class="like-btn-sm">
+<%= link_to "お気に入り", item_favorites_path(item), method: :post %>
 </div>
+</div>
+</div>
+<% end %>
+<% end %>
 
+
+<div class="container">
 <div class="bottom">
-<a href="#" class="btn-lg">続きを見る</a>
+<!-- <a href="#" class="btn-lg">続きを見る</a> -->
 
+<%= paginate @items, outer_window: 5 %>
 </div>
 </div>
 
