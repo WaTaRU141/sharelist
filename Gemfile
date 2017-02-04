@@ -30,9 +30,8 @@ gem 'jquery-rails'
 gem 'jquery-turbolinks'
 
 
-gem 'sqlite3', group: :development
-# 本番ではpostgressを使用する
-gem 'pg', group: :production
+gem 'sqlite3'#, group: :development
+# gem 'pg', group: :production
 gem "font-awesome-rails"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
